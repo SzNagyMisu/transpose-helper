@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC-s vs szolmizációs hangok</title>
+    <style>
+        body {
+            --circle-width: 400px;
+            --article-height: 60px;
+        }
+        main {
+            height: var(--circle-width);
+        }
+
+        footer {
+            margin-top: 20px;
+        }
+
+        section {
+            border: 1px solid;
+            position: relative;
+            border-radius: 50%;
+            box-sizing: border-box;
+            user-select: none;
+
+            article {
+                transition: transform 0.8s ease-in-out;
+            }
+        }
+
+        section.c-d-e-f {
+            width: var(--circle-width);
+            height: var(--circle-width);
+            border-color: red;
+
+            article {
+                --article-width: 60px;
+                width: var(--article-width);
+                height: var(--article-height);
+                line-height: var(--article-height);
+                text-align: center;
+                position: absolute;
+                left: calc(var(--circle-width) / 2 - var(--article-width) / 2);
+                transform-origin: calc(var(--article-width) / 2) calc(var(--circle-width) / 2);
+
+                &:nth-child(1) {
+                    transform: rotate(0deg);
+                }
+                &:nth-child(2) {
+                    transform: rotate(30deg);
+                }
+                &:nth-child(3) {
+                    transform: rotate(60deg);
+                }
+                &:nth-child(4) {
+                    transform: rotate(90deg);
+                }
+                &:nth-child(5) {
+                    transform: rotate(120deg);
+                }
+                &:nth-child(6) {
+                    transform: rotate(150deg);
+                }
+                &:nth-child(7) {
+                    transform: rotate(180deg);
+                }
+                &:nth-child(8) {
+                    transform: rotate(210deg);
+                }
+                &:nth-child(9) {
+                    transform: rotate(240deg);
+                }
+                &:nth-child(10) {
+                    transform: rotate(270deg);
+                }
+                &:nth-child(11) {
+                    transform: rotate(300deg);
+                }
+                &:nth-child(12) {
+                    transform: rotate(330deg);
+                }
+            }
+
+            &.fifths {
+                article {
+                    span.hide-in-fifths {
+                        display: none;
+                    }
+
+                    &:nth-child(1) {
+                        transform: rotate(0deg);
+                    }
+                    &:nth-child(2) {
+                        transform: rotate(-150deg);
+                    }
+                    &:nth-child(3) {
+                        transform: rotate(60deg);
+                    }
+                    &:nth-child(4) {
+                        transform: rotate(-90deg);
+                    }
+                    &:nth-child(5) {
+                        transform: rotate(120deg);
+                    }
+                    &:nth-child(6) {
+                        transform: rotate(-30deg);
+                    }
+                    &:nth-child(7) {
+                        transform: rotate(180deg);
+                    }
+                    &:nth-child(8) {
+                        transform: rotate(30deg);
+                    }
+                    &:nth-child(9) {
+                        transform: rotate(-120deg);
+                    }
+                    &:nth-child(10) {
+                        transform: rotate(90deg);
+                    }
+                    &:nth-child(11) {
+                        transform: rotate(-60deg);
+                    }
+                    &:nth-child(12) {
+                        transform: rotate(150deg);
+                    }
+                }
+            }
+        }
+
+        section.do-re-mi-fa {
+            --width: calc(var(--circle-width) - 2 * var(--article-height));
+            width: var(--width);
+            height: var(--width);
+            border-color: blue;
+            top: calc(-1 * (var(--circle-width) - var(--article-height)));
+            left: var(--article-height);
+
+            article {
+                --article-width: 40px;
+                width: var(--article-width);
+                height: var(--article-height);
+                line-height: var(--article-height);
+                text-align: center;
+                position: absolute;
+                left: calc(var(--width) / 2 - var(--article-width) / 2);
+                transform-origin: calc(var(--article-width) / 2) calc(var(--width) / 2);
+
+                &:nth-child(1) {
+                    transform: rotate(0deg);
+                }
+                &:nth-child(2) {
+                    transform: rotate(60deg);
+                }
+                &:nth-child(3) {
+                    transform: rotate(120deg);
+                }
+                &:nth-child(4) {
+                    transform: rotate(150deg);
+                }
+                &:nth-child(5) {
+                    transform: rotate(210deg);
+                }
+                &:nth-child(6) {
+                    transform: rotate(270deg);
+                }
+                &:nth-child(7) {
+                    transform: rotate(330deg);
+                }
+            }
+
+            &.fifths {
+                article {
+                    &:nth-child(1) {
+                        transform: rotate(0deg);
+                    }
+                    &:nth-child(2) {
+                        transform: rotate(60deg);
+                    }
+                    &:nth-child(3) {
+                        transform: rotate(120deg);
+                    }
+                    &:nth-child(4) {
+                        transform: rotate(-30deg);
+                    }
+                    &:nth-child(5) {
+                        transform: rotate(30deg);
+                    }
+                    &:nth-child(6) {
+                        transform: rotate(90deg);
+                    }
+                    &:nth-child(7) {
+                        transform: rotate(150deg);
+                    }
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>ABC-s vs szolmizációs hangok</h1>
+    <main>
+        <section class="c-d-e-f">
+            <article>C</article>
+            <article><span class="hide-in-fifths">C# / </span>Db</article>
+            <article>D</article>
+            <article><span class="hide-in-fifths">D# / </span>Eb</article>
+            <article>E</article>
+            <article>F</article>
+            <article>F# / Gb</article>
+            <article>G</article>
+            <article><span class="hide-in-fifths">G# / </span>Ab</article>
+            <article>A</article>
+            <article><span class="hide-in-fifths">A# / </span>B</article>
+            <article>H</article>
+        </section>
+        <section class="do-re-mi-fa">
+            <article>dó</article>
+            <article>ré</article>
+            <article>mi</article>
+            <article>fá</article>
+            <article>szó</article>
+            <article>lá</article>
+            <article>ti</article>
+        </section>
+    </main>
+    <footer>
+        <label>
+            <input type="radio" name="mode" value="scale" checked>
+            <span>Skála</span>
+        </label>
+        <label>
+            <input type="radio" name="mode" value="fifths">
+            <span>Kvintkör</span>
+        </label>
+    </footer>
+
+    <script>
+        let mouseDownAngle = null;
+        let doremifaCircleAngle = 0;
+
+        const cdefCircle = document.querySelector('.c-d-e-f');
+        const cdefCircleCenter = {
+            x: cdefCircle.offsetLeft + cdefCircle.offsetWidth / 2,
+            y: cdefCircle.offsetTop + cdefCircle.offsetHeight / 2
+        };
+        const doremifaCircle = document.querySelector('.do-re-mi-fa');
+
+        function getAngle({ clientX, clientY }) {
+            const x = clientX - cdefCircleCenter.x;
+            const y = clientY - cdefCircleCenter.y;
+            return Math.atan2(x, -y) * 180 / Math.PI;
+        }
+
+        doremifaCircle.addEventListener('mousedown', (event) => {
+            mouseDownAngle = getAngle(event);
+        });
+
+        document.addEventListener('mousemove', (event) => {
+            if (mouseDownAngle == null) return;
+
+            const angle = getAngle(event);
+            const angleDiff = angle - mouseDownAngle;
+            doremifaCircle.style.transform = `rotate(${doremifaCircleAngle + angleDiff}deg)`;
+        });
+
+        document.addEventListener('mouseup', (event) => {
+            if (mouseDownAngle == null) return;
+
+            const angle = getAngle(event);
+            doremifaCircleAngle = doremifaCircleAngle + Math.round((angle - mouseDownAngle) / 30) * 30;
+            doremifaCircle.style.transform = `rotate(${doremifaCircleAngle}deg)`;
+            mouseDownAngle = null;
+        });
+
+        document.querySelector("input[type='radio'][name='mode'][value='scale']").addEventListener('change', (event) => {
+            cdefCircle.classList.remove('fifths');
+            doremifaCircle.classList.remove('fifths');
+        });
+
+        document.querySelector("input[type='radio'][name='mode'][value='fifths']").addEventListener('change', (event) => {
+            cdefCircle.classList.add('fifths');
+            doremifaCircle.classList.add('fifths');
+        });
+    </script>
+</body>
+</html>
