@@ -252,25 +252,55 @@
             return Math.atan2(x, -y) * 180 / Math.PI;
         }
 
+        function setMouseDownAngle(angle) {
+            mouseDownAngle = angle;
+        }
+
+        function rotateDoremifaCircle(angle) {
+            const angleDiff = angle - mouseDownAngle;
+            doremifaCircle.style.transform = `rotate(${doremifaCircleAngle + angleDiff}deg)`;
+        }
+
+        function finishRotateDoremifaCircle(angle) {
+            doremifaCircleAngle = doremifaCircleAngle + Math.round((angle - mouseDownAngle) / 30) * 30;
+            doremifaCircle.style.transform = `rotate(${doremifaCircleAngle}deg)`;
+            mouseDownAngle = null;
+        }
+
         doremifaCircle.addEventListener('mousedown', (event) => {
-            mouseDownAngle = getAngle(event);
+            const angle = getAngle(event);
+            setMouseDownAngle(angle);
+        });
+        doremifaCircle.addEventListener('touchstart', (event) => {
+            const angle = getAngle(event.changedTouches[0]);
+            setMouseDownAngle(angle);
         });
 
         document.addEventListener('mousemove', (event) => {
             if (mouseDownAngle == null) return;
 
             const angle = getAngle(event);
-            const angleDiff = angle - mouseDownAngle;
-            doremifaCircle.style.transform = `rotate(${doremifaCircleAngle + angleDiff}deg)`;
+            rotateDoremifaCircle(angle);
+        });
+        document.addEventListener('touchmove', (event) => {
+            if (mouseDownAngle == null) return;
+
+            const angle = getAngle(event.changedTouches[0]);
+            rotateDoremifaCircle(angle);
         });
 
         document.addEventListener('mouseup', (event) => {
             if (mouseDownAngle == null) return;
 
             const angle = getAngle(event);
-            doremifaCircleAngle = doremifaCircleAngle + Math.round((angle - mouseDownAngle) / 30) * 30;
-            doremifaCircle.style.transform = `rotate(${doremifaCircleAngle}deg)`;
-            mouseDownAngle = null;
+            finishRotateDoremifaCircle(angle);
+        });
+
+        document.addEventListener('touchend', (event) => {
+            if (mouseDownAngle == null) return;
+
+            const angle = getAngle(event.changedTouches[0]);
+            finishRotateDoremifaCircle(angle);
         });
 
         document.querySelector("input[type='radio'][name='mode'][value='scale']").addEventListener('change', (event) => {
